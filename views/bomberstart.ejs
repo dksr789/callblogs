@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+    <title>OTP Sender</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Bootstrap Navbar -->
+    <%- include('common/nav')-%>
+    
+    <br>
+    <br>
+
+    <div class="container mt-6" style="max-width: 60%; height: auto !important;">
+
+        <!-- <div class="container">
+            <h1>Value Display</h1>
+            <div id="displayValue">
+            </div>
+        </div> -->
+
+        <center>
+            <div style="text-align:center;" class="alert alert-warning" role="alert">
+                We Made This Tool Only For <strong>Fun Purposes</strong>. We Are Not Responsible For Any Misuse.
+            </div>
+        </center>
+
+        <center>
+            <div class="alert alert-success" style="font-size:15px;">
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+                    type="module"></script>
+
+                <dotlottie-player src="https://lottie.host/40633686-7bef-4400-aa62-4aa9bbb82c05/35SkiTXGxX.json"
+                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop
+                    autoplay></dotlottie-player><br><br>
+                <div id="displayValue">
+                    <!-- Displayed value will appear here -->
+                </div>
+            </div>
+        </center>
+
+        <center>
+            <button onclick="stopOTP()" class="btn btn-danger">Stop OTP Process</button>
+        </center>
+    </div>
+
+    <div class="circle-container">
+        <a href="https://telegram.dog/callbomb" target="_blank">
+            <div class="circle-tele"></div>
+        </a>
+    </div>
+
+
+    <script src="/script.js"></script>
+    <script>
+        // Get the value from the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const value = urlParams.get('inputValue');
+
+        // Display the value in the container
+        const displayValueContainer = document.getElementById('displayValue');
+        displayValueContainer.innerHTML = `<p>PhoneNumber: ${value}</p>`;
+    </script>
+</body>

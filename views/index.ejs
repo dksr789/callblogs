@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>OTP Sender</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <%- include('common/nav')-%>
+
+    <!-- alret windows -->
+
+    <div class="alert alert-warning anim-controll" role="alert">
+        <center>
+            <div class="container-anim">
+                <span class="text first-text">Welcome To</span><br>
+                <span class="text sec-text"></span>
+            </div>
+            <!-- <h1>Welcome To <strong>Call Bomber</strong>&nbsp;2024</h1> -->
+            <p class="lead">Now bomb your friend's inbox using our Call bomber service. This is an prank application
+                which can send spam Call to target. Our Call bomber is <strong>Free</strong>, <strong>Easy To
+                    Use</strong> and cross platform support.</p>
+        </center>
+    </div>
+
+    <!-- alret windows close -->
+
+    <!-- second alert windows -->
+
+    <div class="container" style="max-width: 60%; height: auto !important;">
+        <div class="alert alert-dismissible alert-danger" id="myAlert">
+            <button type="button" class="close" data-dismiss="alert" onclick="closeAlert()">&times;</button>
+            <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;Note:-</strong> We created this website for fun
+            purposes. We don't have any intentions to harm anyone.
+        </div>
+    </div>
+
+    <!-- second alert windows close -->
+
+    <div class="container mt-6" style="max-width: 60%; height: auto !important;">
+
+        <center>
+            <div class="container mt-4">
+                <div class="mb-3 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+91</span>
+                    </div>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                        placeholder="Enter phone number">
+                </div>
+
+                <button class="btn btn-primary" id="submitButton">send otp
+                    <!-- <a href="/bomberstart.html" class="otpsenddesign">send otp</a> -->
+                </button>
+            </div>
+        </center><br>
+
+        <hr>
+        <center>
+            <b>| Join <a href="https://telegram.dog/callbomb"> Telegram Channel</a> For Latest Update |</b>
+        </center>
+        <hr>
+
+        <div class="panel panel-info mt-4">
+            <div class="panel-heading text-white"><b><i class="fa fa-bomb" aria-hidden="true"></i>&nbsp;More Tools</b>
+            </div>
+            <div class="panel-body">
+                <center>
+                    <a href="#" class="btn btn-warning"><b>
+                            <i class="fa fa-bomb" aria-hidden="true"></i>&nbsp;Sms Bomber</b></a><br><br>
+                    <a href="/number-lookup" class="btn btn-warning">
+                        <b><i class="fa fa-search"></i>&nbsp;Number Lookup</b></a><br><br>
+                    <a href="#" class="btn btn-danger">
+                        <b><i class="fa fa-bomb" aria-hidden="true"></i>&nbsp;Call+Sms Bomber</b></a><br><br>
+                    <a href="/Protect" class="btn btn-warning">
+                        <b><i class="fa fa-lock"></i>&nbsp;Protect Your Number</b></a><br><br>
+                    <a href="#" class="btn btn-danger">
+                        <b><i class="fa-brands fa-instagram"></i>&nbsp;Insta Followers/Like Adder</b></a>
+                </center>
+            </div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading text-white"><b><i class="fa fa-bomb" aria-hidden="true"></i>&nbsp;What Is Call
+                    Bomber?</b>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Call Bomber is a prank tool, Which can send huge amount of Call in one time. You can use it on your
+                    friends and irritate them.
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading text-white"><b><i class="fa fa-bomb" aria-hidden="true"></i>&nbsp;How To Use Call
+                    Bomber?</b>
+            </div>
+            <div class="panel-body">
+                <b>Step 1:</b> Enter the number you want to bomb on the above form.
+                <br>
+                <b>Step 2:</b> Now hit the submit button.
+            </div>
+        </div>
+    </div>
+
+    <div class="circle-container">
+        <a href="https://telegram.dog/callbomb" target="_blank">
+            <div class="circle-tele"></div>
+        </a>
+    </div>
+    <script src="/script.js"></script>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js';
+        import { getDatabase, ref, query, orderByChild, equalTo, get } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCBZDU9P7eL16NWeU9iDo4575GFyQbppa0",
+            authDomain: "protectnumber-83a0c.firebaseapp.com",
+            databaseURL: "https://protectnumber-83a0c-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "protectnumber-83a0c",
+            storageBucket: "protectnumber-83a0c.appspot.com",
+            messagingSenderId: "214159750481",
+            appId: "1:214159750481:web:5740a35609625bf1818f70"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        console.log("Firebase app initialized successfully");
+
+        const database = getDatabase(app);
+
+        async function checkNumber() {
+            var numberToCheck = document.getElementById("phoneNumber").value;
+
+            // Check if the number to check is provided
+            if (numberToCheck) {
+                const usersRef = ref(database, 'users');
+
+                // Use query to check if the number exists in the database
+                const q = query(usersRef, orderByChild('number'), equalTo(numberToCheck));
+
+                try {
+                    const snapshot = await get(q);
+                    if (snapshot.exists()) {
+                        console.log("Number exists in the database");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'OOPs..!!!!',
+                            text: 'Your Number is Protected!'
+                        });
+                        return true; // Indicate that the number exists
+                    }
+                } catch (error) {
+                    console.error("Error checking number in the database:", error);
+                }
+
+                return false; // Indicate that the number does not exist
+            }
+        }
+
+        async function sendOTP() {
+            const phoneNumberElement = document.getElementById('phoneNumber');
+            const phoneNumber = phoneNumberElement.value.trim();
+            const valuephone = phoneNumberElement.value;
+            // Redirect to value.html with the input value as a query parameter
+            window.location.href = `/Bomberstart?inputValue=${encodeURIComponent(valuephone)}`;
+
+            // if (!phoneNumber) {
+            //     alert('Please enter a phone number');
+            //     return;
+            // }
+
+            try {
+                const responseGuarented = await fetch('/send-otp/guarented', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Origin': 'https://www.guarented.com',
+                        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0',
+                    },
+                    body: JSON.stringify({ phone: phoneNumber }),
+                });
+
+                const resultGuarented = await responseGuarented.json();
+                console.log(resultGuarented);
+
+                // Wait for 10 seconds before sending OTP from Swiggy
+                await new Promise(resolve => setTimeout(resolve, 10000));
+
+                const responseSwiggy = await fetch('/send-otp/swiggy', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Origin': 'https://www.swiggy.com',
+                        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0',
+                    },
+                    body: JSON.stringify({ mobile: phoneNumber }),
+                });
+
+                const resultSwiggy = await responseSwiggy.json();
+                console.log(resultSwiggy);
+
+                // Wait for 10 seconds before sending OTP from Zomato
+                await new Promise(resolve => setTimeout(resolve, 10000));
+
+                const responseZomato = await fetch('/send-otp/zomato', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'multipart/form-data; boundary=---------------------------1860107177107053019979095740',
+                        'Origin': 'https://accounts.zomato.com',
+                        'Referer': 'https://accounts.zomato.com/zoauth/login?login_challenge=248874bba2644d5a87ad1b7fad1de15e',
+                        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:121.0) Gecko/20100101 Firefox/121.0',
+                        'x-zomato-csrft': '', // Replace with the actual CSRF token
+                    },
+                    body: JSON.stringify({ number: phoneNumber }),
+                });
+
+                const resultZomato = await responseZomato.json();
+                console.log(resultZomato);
+
+                // Wait for 10 seconds before sending OTP from Confirmtkt
+                await new Promise(resolve => setTimeout(resolve, 10000));
+
+                const responseConfirmtkt = await fetch('/send-otp/confirmtkt', {
+                    method: 'GET',
+                    body: JSON.stringify({ mobileNumber: phoneNumber }),
+                });
+
+                const resultConfirmtkt = await responseConfirmtkt.json();
+                console.log(resultConfirmtkt);
+
+                // Wait for 10 seconds before sending OTP from Swiggysignup
+                await new Promise(resolve => setTimeout(resolve, 10000));
+
+                const responseSwiggysignup = await fetch('/send-otp/swiggysignup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Origin': 'https://www.swiggy.com',
+                        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0',
+                    },
+                    body: JSON.stringify({ mobile: phoneNumber }),
+                });
+
+                const resultSwiggysignup = await responseSwiggysignup.json();
+                console.log(resultSwiggysignup);
+
+                // Wait for 10 seconds before sending OTP from Swiggysignup
+                await new Promise(resolve => setTimeout(resolve, 10000));
+
+                const responseZepto = await fetch('/send-otp/zepto', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Referer': 'https://www.zeptonow.com/',
+                        'Access-Control-Allow-Credentials': 'true',
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'requestId': '6704910682711572',
+                        'sessionId': '4384783635241841',
+                        'appVersion': '7.0.2-WEB',
+                        'bundleVersion': 'v1',
+                        'platform': 'WEB',
+                        'compatible_components': 'CONVENIENCE_FEE,NEW_FEE_STRUCTURE',
+                        'deviceId': '3034202986321597',
+                        'Origin': 'https://www.zeptonow.com',
+                        'Sec-Fetch-Dest': 'empty',
+                        'Sec-Fetch-Mode': 'cors',
+                        'Sec-Fetch-Site': 'cross-site',
+                        'deviceUID': '',
+                        'systemVersion': ''
+                    },
+                    body: JSON.stringify({ mobileNumber: phoneNumber }),
+                });
+
+                const resultzepto = await responseZepto.json();
+                console.log(resultzepto);
+
+                // Wait for 10 seconds before sending OTP from Swiggysignup
+                await new Promise(resolve => setTimeout(resolve, 10000));
+
+                const responseBlinkit = await fetch('/send-otp/blinkit', {
+                    method: 'POST',
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0',
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Referer': 'https://blinkit.com/',
+                        'auth_key': 'c761ec3633c22afad934fb17a66385c1c06c5472b4898b866b7306186d0bb477',
+                        'app_client': 'consumer_web',
+                        'rn_bundle_version': '1009003012',
+                        'app_version': '52434332',
+                        'web_app_version': '1008010012',
+                        'session_uuid': '48a03c8e-fa7d-4d38-988d-862d7a7e2827',
+                        'device_id': 'e47066bd-6a3d-4ce6-8bfb-41caf3c1a80a'
+                    },
+                    body: JSON.stringify({ user_phone: phoneNumber }),
+                });
+
+                const resultblinkit = await responseBlinkit.json();
+                console.log(resultblinkit);
+
+            } catch (error) {
+                console.error('Error sending OTP:', error);
+            }
+        }
+
+        document.getElementById("submitButton").addEventListener("click", async function () {
+            // Run checkNumber() function
+            const numberExists = await checkNumber();
+
+            // If the number exists in the database, return without running sendOTP()
+            if (numberExists) {
+                return;
+            }
+
+            // If the number is not in the database, proceed to sendOTP()
+            await sendOTP();
+        });
+    </script>
+</body>
+
+</html>

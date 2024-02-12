@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Add your custom styles here -->
+    <style>
+        .post {
+            margin-bottom: 30px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            border-radius: 75px;
+            padding: 15px;
+            transition: 1s box-shadow;
+            position: relative;
+            margin: 20px auto;
+            width: 310px;
+            height: 431px;
+            background: white;
+        }
+
+        .post:hover {
+            box-shadow: 0 5px 35px 0px rgba(0, 0, 0, .1);
+        }
+
+        .post:hover::before,
+        .post:hover::after {
+            display: block;
+            content: '';
+            position: absolute;
+            width: 310px;
+            height: 431px;
+            background: #FDA8CF;
+            border-radius: 75px;
+            z-index: -1;
+            animation: 1s clockwise infinite;
+        }
+
+        .post:hover:after {
+            background: #F3CE5E;
+            animation: 2s counterclockwise infinite;
+        }
+
+        @keyframes clockwise {
+            0% {
+                top: -5px;
+                left: 0;
+            }
+
+            12% {
+                top: -2px;
+                left: 2px;
+            }
+
+            25% {
+                top: 0;
+                left: 5px;
+            }
+
+            37% {
+                top: 2px;
+                left: 2px;
+            }
+
+            50% {
+                top: 5px;
+                left: 0;
+            }
+
+            62% {
+                top: 2px;
+                left: -2px;
+            }
+
+            75% {
+                top: 0;
+                left: -5px;
+            }
+
+            87% {
+                top: -2px;
+                left: -2px;
+            }
+
+            100% {
+                top: -5px;
+                left: 0;
+            }
+        }
+
+        @keyframes counterclockwise {
+            0% {
+                top: -5px;
+                right: 0;
+            }
+
+            12% {
+                top: -2px;
+                right: 2px;
+            }
+
+            25% {
+                top: 0;
+                right: 5px;
+            }
+
+            37% {
+                top: 2px;
+                right: 2px;
+            }
+
+            50% {
+                top: 5px;
+                right: 0;
+            }
+
+            62% {
+                top: 2px;
+                right: -2px;
+            }
+
+            75% {
+                top: 0;
+                right: -5px;
+            }
+
+            87% {
+                top: -2px;
+                right: -2px;
+            }
+
+            100% {
+                top: -5px;
+                right: 0;
+            }
+        }
+
+        .post img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 60px;
+        }
+
+        .post-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .example_d {
+            color: #20bf6b !important;
+            text-transform: uppercase;
+            background: #ffffff;
+            border: 4px solid #20bf6b !important;
+            border-radius: 6px;
+            display: inline-block;
+            transition: all 0.3s ease 0s;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        .example_d:hover {
+            color: #ffffff !important;
+            border-radius: 50px;
+            border-color: #494949 !important;
+            transition: all 0.3s ease 0s;
+        }
+
+        /* Media query for tablets and larger devices */
+        @media only screen and (max-width: 768px) {
+
+            /* Regular styles for .post on tablets and larger devices go here */
+            .post {
+                /* Regular styles for .post on tablets and larger devices go here */
+                width: 100%;
+            }
+
+            /* Hover styles for .post on tablets and larger devices go here */
+            .post:hover {
+                box-shadow: 0 5px 35px 0px rgba(0, 0, 0, .1);
+            }
+
+            /* Hover styles with animations for .post on tablets and larger devices go here */
+            .post:hover::before,
+            .post:hover::after {
+                display: block;
+                content: '';
+                position: absolute;
+                width: 100%;
+                background: #FDA8CF;
+                border-radius: 75px;
+                z-index: -1;
+                animation: 1s clockwise infinite;
+            }
+
+            .post:hover:after {
+                background: #F3CE5E;
+                animation: 2s counterclockwise infinite;
+            }
+        }
+
+        .recent-post-style {
+            background-color: tomato;
+            padding: 20px;
+            border-radius: 75px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .search-style {
+            background-color: tomato;
+            padding: 10px;
+            border-radius: 75px;
+            color: #ffff;
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            /* padding: 10px; */
+            margin-bottom: 10px;
+            height: 50px;
+            border-radius: 75px;
+            padding: 20px;
+        }
+
+        .pagination {
+            margin-top: 10%;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Bootstrap Navbar -->
+    <%- include('./common/nav') -%>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h1 class="mt-5 mb-4">Latest Posts</h1>
+                    <div class="row">
+                        <% posts.forEach(post=> { %>
+                            <div class="col-lg-4">
+                                <div class="post">
+                                    <img src="<%= post.imageUrl %>" alt="<%= post.title %>" class="img-fluid">
+                                    <h3>
+                                        <%= post.title %>
+                                    </h3>
+                                    <div class="post-content">
+                                        <%- post.content.substring(0, post.content.indexOf('</p>', 10) + 4) %>
+                                    </div>
+                                    <a href="/<%= post.slug %>" class="btn btn-primary example_d">Read more</a>
+                                </div>
+                            </div>
+                            <% }); %>
+                    </div>
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation custom-pagination-style">
+                        <ul class="pagination">
+                            <% if (currentPage> 1) { %>
+                                <li class="page-item"><a class="page-link"
+                                        href="/blogs?page=<%= currentPage - 1 %>">Previous</a></li>
+                                <% } %>
+                                    <% for (let i=1; i <=totalPages; i++) { %>
+                                        <li class="page-item <%= i === currentPage ? 'active' : '' %>"><a
+                                                class="page-link" href="/?page=<%= i %>">
+                                                <%= i %>
+                                            </a></li>
+                                        <% } %>
+                                            <% if (currentPage < totalPages) { %>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/blogs?page=<%= currentPage + 1 %>">Next</a></li>
+                                                <% } %>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 sidebar">
+                    <h2 class="mt-5 mb-4 recent-post-style">Recent Posts</h2>
+                    <ul>
+                        <% recentPosts.forEach(post=> { %>
+                            <li><a href="/<%= post.slug %>">
+                                    <%= post.title %>
+                                </a></li>
+                            <% }); %>
+                    </ul>
+                    <h2 class="mt-5 mb-4 search-style">Search</h2>
+                    <form action="/search" method="GET">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="q" placeholder="Search by Post Name">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <%- include('./common/footer')-%>
+</body>
+
+</html>
