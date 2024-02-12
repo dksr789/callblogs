@@ -389,19 +389,15 @@ app.get('/admin', (req, res) => {
 });
 
 app.post('/admin/login', (req, res) => {
-    // Get admin credentials from environment variables
-    const adminUsername = process.env.ADMIN_USERNAME;
-    const adminPassword = process.env.ADMIN_PASSWORD;
-    // Dummy admin authentication logic
+    // Dummy admin authentication logic, replace with your own
     const { username, password } = req.body;
-    if (username === adminUsername && password === adminPassword) {
+    if (username === 'admin' && password === 'password') {
         req.session.loggedIn = true;
         res.redirect('/admin/add');
     } else {
         res.send('Invalid username or password');
     }
 });
-
 
 app.get('/admin/add', (req, res) => {
     if (!req.session.loggedIn) {
